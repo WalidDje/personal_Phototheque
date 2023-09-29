@@ -41,8 +41,25 @@ const addImage = async (req, res) => {
     res.redirect(`/albums/${idAlbum}`);
 };
 
+const albums = (req, res) => {
+    res.render('albums', {title: 'Mes albums'});
+};
+
 const createAlbumForm =  (req, res) => {
     res.render('new-album', {
+        title: 'Nouvel album',
+        errors: req.flash('error')
+    });
+};
+
+const createAlbum = async (req, res, err) => {
+    try {
+        await Album.create({
+            title: req.body.albumTitle,
+        })
+        res.redirect('/');
+    } catch (err) {
+        req.flash('error', "Erreur lors de la création de l'album");
         title: 'New album',
         errors: req.flash('error'),
     });
@@ -67,8 +84,6 @@ const createAlbum = async (res, req) => {
 
 module.exports = {
     albums,
-    album,
-    addImage,
     createAlbumForm,
     createAlbum,
 };
