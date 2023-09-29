@@ -24,7 +24,7 @@ app.use(session({
 }))
 
 app.get('/', (req, res) => {
-    res.render('album', { title: 'Album' });
+    res.redirect('/albums');
 });
 
 app.use('/', albumRoutes);

@@ -3,6 +3,8 @@ const router = express.Router();
 const albumController = require('../controllers/albumController');
 
 router.get('/albums', albumController.albums);
+router.get('/albums/:id', albumController.album);
+router.post('/albums/:id', albumController.addImage);
 
 router.get('/albums/create', albumController.createAlbumForm);
 
