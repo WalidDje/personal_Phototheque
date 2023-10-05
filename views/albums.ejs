@@ -23,7 +23,9 @@
                                 <a href="/albums/<% album.id %>">
                                     <% album.title %>
                                 </a>
-                                <a href="#" class="link-light badge bg-danger rounded-pill">Supprimer</a>
+                                <a href="/albums/<% album.id %>/delete" class="link-light badge bg-danger rounded-pill">
+                                    Supprimer
+                                </a>
                             </li>
                         <% }) %>
                     </ul>
