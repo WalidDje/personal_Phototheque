@@ -5,10 +5,40 @@
     </head>
     <body>
         <%- include('partials/nav') %>
+            
             <div class="container">
-                <h1>Bienvenu dans le projet Photothèque!</h1>
-                <a href="/albums" class="btn btn-primary p-2 m-2">Accéder aux albums</a>
+                <div class="row mt-4">
+                    <div class="col">
+                        <h1 class="mb-4">
+                            <% album.title %>
+                        </h1>
+                        <a href="/albums" class="mt-4">
+                            &lt; Retour
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Ajouter une image
+                                </h5>
+                                <form method="POST" action="" class="form-inline">
+                                    <input
+                                    type="file"
+                                    name="image"
+                                    class="form-control-file">
+                                    <button type="submit" class="btn btn-primary mt-3">
+                                        Ajouter
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+    
         <%- include('partials/scripts') %>
     </body>
 </html>

@@ -15,6 +15,20 @@
                     </a>
                 </div>
             </div>
+            <div class="row">
+                <div class="col col-xs-12 col-sm-4">
+                    <ul class="list-group">
+                        <% albums.forEach((album) => { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="/albums/<% album.id %>">
+                                    <% album.title %>
+                                </a>
+                                <a href="#" class="link-light badge bg-danger rounded-pill">Supprimer</a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <%- include('partials/scripts') %>

@@ -1,7 +1,27 @@
 const Album = require('../models/album');
 
-const albums = (req, res) => {
-    res.render('albums', {title: 'Mes albums'});
+const album = async (req, res) => {
+    try {
+
+        const idAlbum = req.params.id;
+        const album = await Album.findById(idAlbum);
+        
+        res.render('album', {
+            title: 'album',
+            album: album
+        });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/404');
+    }
+};
+
+const albums = async (req, res) => {
+    const albums = await Album.find();
+    res.render('albums', {
+        title: 'Mes albums',
+        albums: albums
+    });
 };
 
 const createAlbumForm =  (req, res) => {
@@ -24,6 +44,7 @@ const createAlbum = async (req, res, err) => {
 };
 
 module.exports = {
+    album,
     albums,
     createAlbumForm,
     createAlbum,
