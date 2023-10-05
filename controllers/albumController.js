@@ -74,6 +74,24 @@ const createAlbum = async (req, res, err) => {
         res.redirect('/');
     } catch (err) {
         req.flash('error', "Erreur lors de la création de l'album");
+        title: 'New album',
+        errors: req.flash('error'),
+    });
+};
+
+const createAlbum = async (res, req) => {
+    try {
+        if (!req.body.albumTitle) {
+            req.flash('error', 'Le titre ne doit pas être vide');
+            res.redirect('/albums/create');
+            return;
+        }
+        await Album.create({
+            title: req.body.albumTitle,
+        })
+        res.redirect('/albums');
+    } catch (err) {
+        req.flash('error', 'Erreur lors de la création de l\'album');
         res.redirect('/albums/create');
     }
 };
